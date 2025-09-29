@@ -1,0 +1,78 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+    theme: {
+        extend: {
+            fontFamily: {
+                Changa: ["Changa"],
+                Montserrat: ["Montserrat"],
+            },
+            colors: {
+                bananaYellow: "#FDD835",
+                bananaGreen: "#7CB342",
+                bananaCream: "#FFF8E1",
+                bananaBrown: "#5D4037",
+                darkblue: "#213555",
+            },
+            screens: {
+                miniphone: { min: "1px", max: "319px" },
+                "phone-sm": { min: "320px", max: "479px" },
+                phone: { min: "480px", max: "639px" },
+                "tablet-sm": { min: "640px", max: "767px" },
+                tablet: { min: "768px", max: "1023px" },
+                "laptop-sm": { min: "1024px", max: "1279px" },
+                laptop: { min: "1280px", max: "1535px" },
+                desktop: { min: "1536px", max: "1919px" },
+                ultrawide: { min: "1920px" },
+            },
+            animation: {
+                "pulse-slow": "pulse 1.5s infinite",
+            },
+            keyframes: {
+                pulse: {
+                    "0%, 100%": { opacity: 1 },
+                    "50%": { opacity: 0.3 },
+                },
+            },
+            transitionDelay: {
+                0: "0ms",
+                200: "200ms",
+                400: "400ms",
+            },
+        },
+    },
+    content: [
+        "./app/Filament/**/*.php",
+        "./resources/views/**/*.blade.php",
+        "./vendor/filament/**/*.blade.php",
+    ],
+    plugins: [],
+    safelist: [
+        'bg-red-600',
+        'bg-green-600',
+        'text-white',
+        'fixed',
+        'top-1/2',
+        'left-1/2',
+        'transform',
+        '-translate-x-1/2',
+        '-translate-y-1/2',
+        'p-6',
+        'rounded-xl',
+        'shadow-xl',
+        'z-50',
+        'text-sm',
+        'font-semibold',
+        'text-center',
+        'transition',
+        'duration-500',
+        'ease-in-out',
+        'hidden',
+        'mt-24',
+        'mx-48',
+        'relative',
+        'top-30',
+        'left-12',
+        'z-50',
+        '-translate-x-full',
+    ],
+};

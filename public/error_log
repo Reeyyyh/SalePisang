@@ -1,0 +1,97 @@
+[01-Aug-2025 17:57:29 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 17:57:29 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 17:58:46 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 17:58:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 17:59:37 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 17:59:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:00:23 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:00:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:01:15 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:01:15 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:01:17 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:01:17 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:01:38 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:01:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:01:48 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:01:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:02:21 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:02:21 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/vendor/composer/../../app/Helpers/FormatHelper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/strj9323/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/strj9323/public_html/vendor/autoload.php(22): ComposerAutoloaderInitbfe12996eeecb6fdc8713a9fd9d431f8::getLoader()
+#2 /home/strj9323/public_html/public/index.php(34): require('/home/strj9323/...')
+#3 {main}
+  thrown in /home/strj9323/public_html/vendor/composer/autoload_real.php on line 41
+[01-Aug-2025 18:22:10 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/public/vendor/autoload.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:10 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/public/vendor/autoload.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/public/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:11 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/public/vendor/autoload.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:11 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/public/vendor/autoload.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/public/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:12 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/public/vendor/autoload.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:12 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/public/vendor/autoload.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/public/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:39 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/public/../../vendor/autoload.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/public/../../vendor/autoload.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/public/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:39 Asia/Jakarta] PHP Warning:  require(/home/strj9323/public_html/public/../../vendor/autoload.php): Failed to open stream: No such file or directory in /home/strj9323/public_html/public/index.php on line 6
+[01-Aug-2025 18:22:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/strj9323/public_html/public/../../vendor/autoload.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/strj9323/public_html/public/index.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/strj9323/public_html/public/index.php on line 6

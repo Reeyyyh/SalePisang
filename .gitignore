@@ -1,0 +1,34 @@
+# Laravel & PHP
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+.env
+.env.*.backup
+.env.production
+Homestead.json
+Homestead.yaml
+.phpunit.result.cache
+.phpunit.cache
+
+# Laravel Mix / Vite
+/public/hot
+/public/build
+
+# IDE & Editor
+/.idea
+/.vscode
+/.fleet
+
+# Logs & Dumps
+npm-debug.log
+yarn-error.log
+composer.lock
+auth.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Custom
+/Post
