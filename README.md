@@ -6,12 +6,11 @@ Dibangun menggunakan **Laravel 10 + Filament Admin Panel** dengan arsitektur MVC
 ---
 
 ## ✨ Fitur Utama
-- 🔐 Autentikasi user (Admin & Seller)
-- 📦 Manajemen Produk (CRUD dengan upload gambar)
+- 🔐 Autentikasi user
+- 📦 Manajemen Produk
 - 🗂️ Manajemen Kategori
-- 🛍️ Keranjang & Checkout (Midtrans Payment Gateway)
-- 📊 Dashboard Admin (Filament)
-- ⭐ Fitur tambahan: review produk, rating, featured product
+- 🛍️ Keranjang & Checkout
+- 📊 Dashboard Admin
 
 ---
 
