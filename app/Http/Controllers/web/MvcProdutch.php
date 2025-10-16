@@ -39,7 +39,7 @@ class MvcProdutch extends Controller
         $priceTo = $request->query('price_to');
         $searchQuery = $request->query('query');
 
-        $query = Product::query();
+        $query = Product::query()->where('is_verified', true);;
 
         // Filter berdasarkan kategori (misal kategori di-checkbox bisa lebih dari 1)
         if ($categoriesFilter && is_array($categoriesFilter)) {
@@ -90,7 +90,7 @@ class MvcProdutch extends Controller
             return redirect('/seller-dashboard'); // langsung ke Filament seller panel
         }
 
-        $product = Product::where('sku', $sku)->firstOrFail();
+        $product = Product::where('sku', $sku)->where('is_verified', true)->firstOrFail();
         return view('product.detail-product', compact('product'));
     }
 
@@ -102,7 +102,7 @@ class MvcProdutch extends Controller
 
         $query = $request->input('query');
 
-        $products = Product::when($query, function ($q) use ($query) {
+        $products = Product::where('is_verified', true)->when($query, function ($q) use ($query) {
             $q->where('product_name', 'like', '%' . $query . '%');
         })->paginate(12);
 

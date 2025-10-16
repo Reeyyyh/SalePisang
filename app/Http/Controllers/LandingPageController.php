@@ -21,8 +21,8 @@ class LandingPageController extends Controller
         }
 
         // Untuk user biasa / guest
-        $latestProducts = Product::orderBy('id', 'desc')->take(4)->get();
-        $featuredProducts = Product::where('is_featured', true)->get();
+        $latestProducts = Product::where('is_verified', true)->orderBy('id', 'desc')->take(4)->get();
+        $featuredProducts = Product::where('is_verified', true)->where('is_featured', true)->get();
         $categories = Category::all();
 
         return view('home.landingpage', compact('latestProducts', 'categories', 'featuredProducts'));

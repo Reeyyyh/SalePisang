@@ -43,8 +43,46 @@
     {{-- Navbar --}}
     <x-navbar></x-navbar>
 
-    {{-- Category Section --}}
-    {{-- <x-category :categories="$categories"></x-category> --}}
+    <div
+        class="mx-auto py-10 px-6 w-full max-w-[1280px] rounded-[15px] bg-gradient-to-r from-yellow-100 to-yellow-50 mt-6 shadow-lg hover:shadow-xl transition-shadow duration-300 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+
+        <!-- Gambar kiri -->
+        <div class="hidden md:flex justify-center">
+            <img src="{{ asset('images/icons/Favicon.png') }}" alt="Ilustrasi Pisang"
+                class="w-full max-w-[300px] h-auto rounded-lg animate-fadeIn delay-200">
+        </div>
+
+        <!-- Teks + tombol kanan -->
+        <div class="text-center md:text-left space-y-4">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#213555] animate-fadeIn">
+                Mulai Belanja Pisang Segar!
+            </h2>
+            <p class="text-sm sm:text-base text-gray-700 max-w-lg animate-fadeIn delay-100">
+                Temukan produk pisang segar langsung dari petani dan nikmati promo menarik.
+            </p>
+
+            <!-- Tombol vertikal -->
+            <div class="flex flex-col space-y-3 mt-4 md:mt-6">
+                @guest
+                    <a href="{{ route('register') }}"
+                        class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300">
+                        Daftar Sekarang
+                    </a>
+                    <a href="{{ route('login') }}"
+                        class="px-6 py-3 border border-blue-500 text-blue-500 font-semibold rounded-lg hover:bg-blue-100 transform hover:scale-105 transition-all duration-300">
+                        Login
+                    </a>
+                @endguest
+
+                @auth
+                    <a href="{{ route('product') }}"
+                        class="px-6 py-3 bg-darkblue text-white font-semibold rounded-lg hover:bg-green-600 transform hover:scale-105 transition-all duration-300">
+                        Belanja Sekarang
+                    </a>
+                @endauth
+            </div>
+        </div>
+    </div>
 
     {{-- About Section --}}
     <div class="mx-auto text-center py-6 sm:py-8 lg:py-10 px-6 w-full max-w-[1280px] rounded-[10px] mt-6 bg-blue-50">
@@ -54,6 +92,7 @@
             Kami menyediakan berbagai jenis pisang berkualitas tinggi, siap dikirim dengan cepat dan harga terjangkau.
         </p>
     </div>
+
 
     {{-- Category Section --}}
     <x-category :categories="$categories"></x-category>

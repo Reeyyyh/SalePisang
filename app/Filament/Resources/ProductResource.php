@@ -5,14 +5,17 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Form;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\ViewField;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -76,7 +79,7 @@ class ProductResource extends Resource
                     ->minValue(0),
 
                 TextInput::make('stock')
-                    ->label('Stok')
+                    ->label('Jumlah Stok')
                     ->required()
                     ->numeric()
                     ->minValue(0),
@@ -89,17 +92,6 @@ class ProductResource extends Resource
                     ->suffix('Kg')
                     ->nullable(),
 
-                Radio::make('status')
-                    ->label('Status Stok')
-                    ->options([
-                        'available' => 'Tersedia',
-                        'out_of_stock' => 'Habis',
-                    ])
-                    ->inline() // biar sejajar horizontal
-                    ->default('available')
-                    ->required(),
-
-
                 Textarea::make('description')
                     ->label('Deskripsi')
                     ->required()
@@ -110,10 +102,34 @@ class ProductResource extends Resource
                     ->relationship('category', 'category_name')
                     ->required(),
 
-                Checkbox::make('is_featured')
-                    ->label('Tampilkan di Halaman Utama')
-                    ->default(false)
-                    ->visible(fn() => auth()->user()?->role === 'admin'),
+                Fieldset::make('Status Produk')
+                    ->schema([
+                        Radio::make('status')
+                            ->label('Stok')
+                            ->options([
+                                'available' => 'Tersedia',
+                                'out_of_stock' => 'Habis',
+                            ])
+                            ->default('available')
+                            ->required()
+                            ->columnSpan(1),
+
+                        Grid::make(1)
+                            ->schema([
+                                Checkbox::make('is_verified')
+                                    ->label('Tampilkan Produk')
+                                    ->default(true),
+                                // ->visible(fn() => auth()->user()?->role === 'admin'),
+
+                                Checkbox::make('is_featured')
+                                    ->label('Produk Pilihan')
+                                    ->default(false)
+                                    ->visible(fn() => auth()->user()?->role === 'admin'),
+                            ])
+                            ->columnSpan(1),
+                    ])
+                    ->columns(2),
+
             ]);
     }
 
@@ -195,11 +211,34 @@ class ProductResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->label('Delete')
+                    ->before(function ($record) {
+                        // simpan nama produk ke session sebelum dihapus
+                        session()->put('deleted_product_name', $record->product_name);
+                    })
+                    ->successNotification(function () {
+                        // ambil nama dari session setelah delete selesai
+                        $productName = session()->pull('deleted_product_name', 'Produk');
+
+                        return Notification::make()
+                            ->success()
+                            ->title("{$productName} berhasil dihapus!");
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->before(function ($records) {
+                            $names = $records->pluck('product_name')->toArray();
+                            session()->put('deleted_product_names', $names);
+                        })
+                        ->successNotification(function () {
+                            $names = session()->pull('deleted_product_names', []);
+                            $count = count($names);
+                            $title = $count > 1 ? "{$count} produk berhasil dihapus!" : (count($names) === 1 ? "{$names[0]} berhasil dihapus!" : "Produk berhasil dihapus!");
+                            return Notification::make()->success()->title($title);
+                        }),
                 ]),
             ])
             ->searchable();

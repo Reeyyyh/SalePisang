@@ -21,6 +21,7 @@ class Product extends Model
         'description',
         'category_id',
         'user_id',
+        'is_verified',
         'is_featured',
     ];
 

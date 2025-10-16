@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('product_name');
-            $table->string('sku')->nullable(); // tetap dipakai buat kode unik
-            $table->decimal('price', 15, 2); // harga per kg / per sisir
-            $table->unsignedInteger('stock'); // stok jumlah (kg / sisir)
+            $table->string('sku')->nullable();
+            $table->decimal('price', 15, 2);
+            $table->unsignedInteger('stock');
             $table->enum('status', ['available', 'out_of_stock'])->default('available');
-            $table->decimal('weight', 8, 2)->nullable(); // berat per unit
+            $table->decimal('weight', 8, 2)->nullable();
+            $table->boolean('is_verified')->default(true);
             $table->boolean('is_featured')->default(false);
             $table->text('description')->nullable();
 

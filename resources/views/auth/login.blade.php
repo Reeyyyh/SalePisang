@@ -82,9 +82,9 @@
 
                     {{-- Email --}}
                     <div class="animate-popUpOut">
-                        <input name="email" type="email" required
-                            class="bg-gray-100 w-full text-sm sm:text-base text-gray-800 px-4 py-3 rounded-md focus:bg-white focus:ring-2 focus:ring-yellow-400 border border-gray-200"
-                            placeholder="Email address" />
+                        <input name="email" type="email" required class="bg-gray-100 w-full text-sm sm:text-base text-gray-800 px-4 py-3 rounded-md focus:bg-white focus:ring-2 focus:ring-yellow-400 border border-gray-200"
+                            placeholder="Email address"/>
+                            {{--  --}}
                         @error('email')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
