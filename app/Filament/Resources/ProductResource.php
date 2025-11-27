@@ -24,6 +24,8 @@ use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 
+use Filament\Forms\Components\TextInput\Mask;
+
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -63,7 +65,7 @@ class ProductResource extends Resource
                 TextInput::make('product_name')
                     ->label('Nama Produk')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(120),
 
                 TextInput::make('sku')
                     ->label('SKU')
@@ -76,13 +78,16 @@ class ProductResource extends Resource
                     ->label('Harga')
                     ->required()
                     ->numeric()
-                    ->minValue(0),
+                    ->minValue(1000)
+                    ->maxValue(10000000)
+                    ->prefix('Rp'),
 
                 TextInput::make('stock')
                     ->label('Jumlah Stok')
                     ->required()
                     ->numeric()
-                    ->minValue(0),
+                    ->minValue(0)
+                    ->maxValue(9999),
 
                 TextInput::make('weight')
                     ->label('Berat (Kg)')

@@ -19,14 +19,21 @@ class MvcAuth extends Controller
     }
 
     // Proses register
+    // 'email' => 'required|string|email|unique:users,email', // Todo : Testing
+    // 'password' => 'required|string|min:6', // Todo : Testing
     public function register(Request $request)
     {
         try {
             $request->validate([
-                'name' => 'required|string|max:255',
-                // 'email' => 'required|string|email|unique:users,email', // Todo : Testing
-                'email' => 'required|string|email|unique:users,email|regex:/@gmail\.com$/',
-                // 'password' => 'required|string|min:6', // Todo : Testing
+                'name' => 'required|string|max:100',
+                'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:100',
+                    'unique:users,email',
+                    'regex:/^[A-Za-z0-9._%+-]+@gmail\.com$/',
+                ],
                 'password' => [
                     'required',
                     'string',
@@ -36,33 +43,34 @@ class MvcAuth extends Controller
                 ],
             ], [
                 'password.regex' => 'Password harus mengandung huruf besar, angka, simbol, serta minimal 8 karakter.',
-                'email.regex' => 'Email harus menggunakan domain @gmail.com',
+                'email.regex' => 'Email harus menggunakan domain @gmail.com.',
+                'password.confirmed' => 'The password confirmation does not match.',
+            ]);
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => 'user',
+                'email_verified_at' => now(),
+            ]);
+
+            return redirect()->route('login')->with([
+                'message' => 'Registrasi berhasil! silahkan login',
+                'status' => 'success'
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // Tangkap error pertama dan kirim via flash message
+            // Tangkap error validasi dan redirect dengan errors
+            return redirect()->back()
+                ->withErrors($e->validator)
+                ->withInput();
+        } catch (\Exception $e) {
+            // Tangani error lain (misal DB error)
             return redirect()->back()->with([
-                'message' => $e->validator->errors()->first(),
+                'message' => 'Terjadi kesalahan saat registrasi. Silakan coba lagi.',
                 'status' => 'error'
             ])->withInput();
         }
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            // 'verification_expires_at' => now()->addDay(),
-            // 'email_verified_at' => null,
-            'role' => 'user',
-            'email_verified_at' => now(), // Todo : Testing
-        ]);
-
-        // Kirim email verifikasi
-        // app(MvcVerificationMail::class)->sendVerificationEmail($user); // Todo : skip Testing
-
-        return redirect()->route('login')->with([
-            'message' => 'Registrasi berhasil! silahkan login',
-            'status' => 'success'
-        ]);
     }
 
     // Tampilkan halaman login
@@ -71,110 +79,62 @@ class MvcAuth extends Controller
         return view('auth.login');
     }
 
-    // Proses login
+    // login white-box
     public function login(Request $request)
     {
         try {
             $credentials = $request->validate([
-                'email' => 'required|string|email|max:255',
+                'email' => 'required|string|email|max:100',
                 'password' => 'required|string',
-            ]);
+            ]); // (S1)
 
-            $remember = $request->has('remember');
+            $remember = $request->has('remember'); // (S2)
 
-            if (Auth::attempt($credentials, $remember)) {
-                $user = Auth::user();
-                $request->session()->regenerate();
+            if (Auth::attempt($credentials, $remember)) { // (S3)
+                $user = Auth::user(); // (S4)
+                $request->session()->regenerate(); // (S5)
 
-                // Cek email verified
-                // if (is_null($user->email_verified_at)) {
-                //     Auth::logout();
-                //     return back()->withErrors(['email' => 'Silakan verifikasi email Anda terlebih dahulu.']);
-                // }
-
-                // Cek role dan arahkan
-                if ($user->role === 'admin') {
+                if ($user->role === 'admin') { // (S6)
                     Notification::make()
                         ->title('Login Berhasil')
                         ->body('Selamat datang, Admin!')
                         ->success()
                         ->send();
+                    return redirect()->intended('/admin-dashboard'); // (S7)
 
-                    return redirect()->intended('/admin-dashboard');
-                }
-
-                if ($user->role === 'seller') {
+                } elseif ($user->role === 'seller') { // (S8)
                     Notification::make()
                         ->title('Login Berhasil')
                         ->body('Selamat datang Seller, selamat berjualan!')
                         ->success()
                         ->send();
+                    return redirect()->intended('/seller-dashboard'); // (S9)
 
-                    return redirect()->intended('/seller-dashboard');
+                } else { // (S10)
+                    return redirect()->intended(route('landingpage'))->with([
+                        'message' => 'Login berhasil!',
+                        'status' => 'success'
+                    ]);
                 }
-
-                // Kalau user biasa → Blade
-                return redirect()->intended(route('landingpage'))->with([
-                    'message' => 'Login berhasil!',
-                    'status' => 'success'
-                ]);
+            } else { // (S11)
+                return redirect()->back()->with([
+                    'message' => 'Email atau password salah!',
+                    'status' => 'error'
+                ])->withInput();
             }
-
-            return redirect()->back()->with([
-                'message' => 'Email atau password salah!',
-                'status' => 'error'
-            ])->withInput();
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (\Illuminate\Validation\ValidationException $e) { // (S12)
             return redirect()->back()->with([
                 'message' => $e->validator->errors()->first(),
                 'status' => 'error'
-            ])->withInput();
-        } catch (\Exception $e) {
+            ])->withInput(); // (S13)
+
+        } catch (\Exception $e) { // (S14)
             return redirect()->back()->with([
                 'message' => 'Terjadi kesalahan saat login. Silakan coba lagi.',
                 'status' => 'error'
-            ])->withInput();
+            ])->withInput(); // (S15)
         }
     }
-
-
-    // public function login(Request $request)
-    // {
-    //     $credentials = $request->validate([
-    //         'email' => 'required|string|email',
-    //         'password' => 'required|string',
-    //     ]);
-
-
-    //     $remember = $request->has('remember');
-
-    //     if (Auth::attempt($credentials, $remember)) {
-    //         $user = Auth::user();
-
-    //         // Cek email verified
-    //         // if (is_null($user->email_verified_at)) {
-    //         //     Auth::logout();
-    //         //     return back()->withErrors(['email' => 'Silakan verifikasi email Anda terlebih dahulu.']);
-    //         // }
-
-    //         // ! still need this??
-    //         if ($user->role === 'admin') {
-    //             return redirect('/admin-dashboard');
-    //         }
-
-    //         if ($user->role === 'seller') {
-    //             return redirect('/seller-dashboard');
-    //         }
-
-    //         $request->session()->regenerate();
-    //         return redirect()->intended(route('landingpage'));
-    //     }
-
-    //     return back()->withErrors(['email' => 'Email atau password salah.'])->onlyInput('email')->with([
-    //         'message' => 'Email atau password salah!',
-    //         'status' => 'danger',
-    //     ]);
-    // }
 
     // Logout
     public function logout(Request $request)

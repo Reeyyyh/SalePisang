@@ -28,15 +28,15 @@ class UserFactory extends Factory
             'password' => Hash::make('password'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'address' => json_encode([
-                'nama_penerima' => $this->faker->name(),
-                'no_telepon' => $this->faker->phoneNumber(),
-                'provinsi' => $this->faker->state(),
-                'kota_kabupaten' => $this->faker->city(),
-                'kecamatan' => $this->faker->word(),
-                'kode_pos' => $this->faker->postcode(),
-                'alamat_lengkap' => $this->faker->address(),
-            ]),
+            // 'address' => json_encode([
+            //     'nama_penerima' => $this->faker->name(),
+            //     'no_telepon' => $this->faker->phoneNumber(),
+            //     'provinsi' => $this->faker->state(),
+            //     'kota_kabupaten' => $this->faker->city(),
+            //     'kecamatan' => $this->faker->word(),
+            //     'kode_pos' => $this->faker->postcode(),
+            //     'alamat_lengkap' => $this->faker->address(),
+            // ]),
         ];
     }
 
