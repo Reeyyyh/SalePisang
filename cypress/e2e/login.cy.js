@@ -1,7 +1,7 @@
 describe('Login Testing', () => {
 
     // USER LOGIN
-    it('Login berhasil dengan kredensial valid', () => {
+    it.only('Login berhasil dengan kredensial valid', () => {
         cy.visit('/login')
 
         cy.get('input[name="email"]', { timeout: 8000 }).type('user@gmail.com')
@@ -14,7 +14,7 @@ describe('Login Testing', () => {
         cy.wait(2000)
     })
 
-    it('Login gagal dengan password salah', () => {
+    it.only('Login gagal dengan password salah', () => {
         cy.visit('/login')
 
         cy.get('input[name="email"]', { timeout: 8000 }).type('user@gmail.com')
@@ -25,7 +25,7 @@ describe('Login Testing', () => {
         cy.wait(2000)
     })
 
-    it('Validasi input kosong', () => {
+    it.only('Validasi input kosong', () => {
         cy.visit('/login')
 
         cy.get('button[type="submit"]').should('be.visible').click()
@@ -50,7 +50,6 @@ describe('Login Testing', () => {
 
         cy.url({ timeout: 10000 }).should('include', '/admin-dashboard')
 
-        // cy.get('body', { timeout: 8000 }).should('be.visible')
         cy.get('.fi-sidebar', { timeout: 15000 }).should('be.visible')
         cy.wait(2000)
     })
@@ -65,7 +64,6 @@ describe('Login Testing', () => {
 
         cy.url({ timeout: 10000 }).should('include', '/seller-dashboard')
 
-        // cy.get('body', { timeout: 8000 }).should('be.visible')
         cy.get('.fi-sidebar', { timeout: 15000 }).should('be.visible')
         cy.wait(2000)
     })

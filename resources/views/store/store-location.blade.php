@@ -20,23 +20,6 @@
 
 <body class="bg-gray-100 font-Montserrat">
 
-    <!-- Loader -->
-    <div id="page-loader" class="fixed inset-0 flex items-center justify-center bg-white z-50">
-        <div class="text-4xl font-bold flex space-x-1 text-darkblue">
-            <span class="dot animate-pulse delay-[0ms]">.</span>
-            <span class="dot animate-pulse delay-[200ms]">.</span>
-            <span class="dot animate-pulse delay-[400ms]">.</span>
-        </div>
-    </div>
-    <script>
-        window.addEventListener('beforeunload', () => {
-            document.getElementById('page-loader').classList.remove('hidden');
-        });
-        window.addEventListener('load', () => {
-            document.getElementById('page-loader').classList.add('hidden');
-        });
-    </script>
-
     <x-navbar></x-navbar>
 
     <!-- Main Container -->
