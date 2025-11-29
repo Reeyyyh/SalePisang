@@ -1,7 +1,7 @@
 describe('Login Testing', () => {
 
     // USER LOGIN
-    it.only('Login berhasil dengan kredensial valid', () => {
+    it('Login berhasil dengan kredensial valid', () => {
         cy.visit('/login')
 
         cy.get('input[name="email"]', { timeout: 8000 }).type('user@gmail.com')
@@ -14,29 +14,25 @@ describe('Login Testing', () => {
         cy.wait(2000)
     })
 
-    it.only('Login gagal dengan password salah', () => {
+    it('Login gagal dengan password salah', () => {
         cy.visit('/login')
 
         cy.get('input[name="email"]', { timeout: 8000 }).type('user@gmail.com')
         cy.get('input[name="password"]', { timeout: 8000 }).type('SalahBanget!')
         cy.get('button[type="submit"]').should('be.visible').click()
 
-        cy.contains('Email atau password salah', { timeout: 8000 }).should('exist')
+        cy.contains('Email atau password salah.', { timeout: 8000 }).should('be.visible')
+
         cy.wait(2000)
     })
 
-    it.only('Validasi input kosong', () => {
+    it('Validasi input kosong', () => {
         cy.visit('/login')
 
         cy.get('button[type="submit"]').should('be.visible').click()
+        cy.contains('The email field is required.', { timeout: 8000 }).should('exist')
+        cy.contains('The password field is required.', { timeout: 8000 }).should('exist')
 
-        cy.get('input[name="email"]').then(($el) => {
-            expect($el[0].validationMessage).to.not.be.empty
-        })
-
-        cy.get('input[name="password"]').then(($el) => {
-            expect($el[0].validationMessage).to.not.be.empty
-        })
         cy.wait(2000)
     })
 
@@ -45,7 +41,7 @@ describe('Login Testing', () => {
         cy.visit('/admin-dashboard/login')
 
         cy.get('#data\\.email', { timeout: 8000 }).type('admin@gmail.com')
-        cy.get('#data\\.password', { timeout: 8000 }).type('User#1234')
+        cy.get('#data\\.password', { timeout: 8000 }).type('Admin#1234')
         cy.get('button[type="submit"]').should('be.visible').click()
 
         cy.url({ timeout: 10000 }).should('include', '/admin-dashboard')
@@ -59,7 +55,7 @@ describe('Login Testing', () => {
         cy.visit('/seller-dashboard/login')
 
         cy.get('#data\\.email', { timeout: 8000 }).type('seller@gmail.com')
-        cy.get('#data\\.password', { timeout: 8000 }).type('User#1234')
+        cy.get('#data\\.password', { timeout: 8000 }).type('Seller#1234')
         cy.get('button[type="submit"]').should('be.visible').click()
 
         cy.url({ timeout: 10000 }).should('include', '/seller-dashboard')

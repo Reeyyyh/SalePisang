@@ -30,8 +30,6 @@
         <x-toast :message="session('message')" :status="$status" />
     @endif
 
-    <div id="notification" class="hidden"></div>
-
     <section class="py-10 px-4 sm:px-6 lg:px-0">
         <div class="min-h-screen flex flex-col items-center justify-start py-10 sm:py-16 overflow-y-auto pb-[120px]">
 
@@ -55,7 +53,7 @@
                 </div>
 
                 {{-- Login Form --}}
-                <form id="login-form" method="POST" action="{{ route('login') }}"
+                <form id="login-form" method="POST" action="{{ route('login') }}" novalidate
                     class="bg-white rounded-lg max-w-md w-full space-y-6 mx-auto px-6 py-8 shadow-md animate-popUpOut">
 
                     @csrf
@@ -63,7 +61,7 @@
 
                     {{-- Email --}}
                     <div class="animate-popUpOut">
-                        <input name="email" type="email" required class="bg-gray-100 w-full text-sm sm:text-base text-gray-800 px-4 py-3 rounded-md focus:bg-white focus:ring-2 focus:ring-yellow-400 border border-gray-200"
+                        <input name="email" type="email" class="bg-gray-100 w-full text-sm sm:text-base text-gray-800 px-4 py-3 rounded-md focus:bg-white focus:ring-2 focus:ring-yellow-400 border border-gray-200"
                             placeholder="Email address"/>
                             {{--  --}}
                         @error('email')
@@ -73,7 +71,7 @@
 
                     {{-- Password --}}
                     <div class="relative animate-popUpOut">
-                        <input id="password" name="password" type="password" required
+                        <input id="password" name="password" type="password"
                             class="bg-gray-100 w-full text-sm sm:text-base text-gray-800 px-4 py-3 rounded-md focus:bg-white focus:ring-2 focus:ring-yellow-400 border border-gray-200 pr-10"
                             placeholder="Password" />
                         <button type="button" onclick="togglePassword()"

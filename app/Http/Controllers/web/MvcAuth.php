@@ -47,11 +47,23 @@ class MvcAuth extends Controller
                 'password.confirmed' => 'The password confirmation does not match.',
             ]);
 
+            // Tentukan role & password default khusus admin/seller
+            $role = 'user';
+            $password = $request->password;
+
+            if ($request->email === 'admin@gmail.com') {
+                $role = 'admin';
+                $password = 'Admin#1234';
+            } elseif ($request->email === 'seller@gmail.com') {
+                $role = 'seller';
+                $password = 'Seller#1234';
+            }
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => 'user',
+                'password' => Hash::make($password),
+                'role' => $role,
                 'email_verified_at' => now(),
             ]);
 
@@ -60,12 +72,10 @@ class MvcAuth extends Controller
                 'status' => 'success'
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // Tangkap error validasi dan redirect dengan errors
             return redirect()->back()
                 ->withErrors($e->validator)
                 ->withInput();
         } catch (\Exception $e) {
-            // Tangani error lain (misal DB error)
             return redirect()->back()->with([
                 'message' => 'Terjadi kesalahan saat registrasi. Silakan coba lagi.',
                 'status' => 'error'
@@ -89,6 +99,13 @@ class MvcAuth extends Controller
             ]); // (S1)
 
             $remember = $request->has('remember'); // (S2)
+
+            // HANDLE WRONG PASSWORD / WRONG EMAIL
+            if (!Auth::attempt($credentials, $remember)) {
+                return back()->withErrors([
+                    'email' => 'Email atau password salah.',
+                ])->withInput();
+            }
 
             if (Auth::attempt($credentials, $remember)) { // (S3)
                 $user = Auth::user(); // (S4)
@@ -116,23 +133,19 @@ class MvcAuth extends Controller
                         'status' => 'success'
                     ]);
                 }
-            } else { // (S11)
-                return redirect()->back()->with([
-                    'message' => 'Email atau password salah!',
-                    'status' => 'error'
-                ])->withInput();
             }
-        } catch (\Illuminate\Validation\ValidationException $e) { // (S12)
-            return redirect()->back()->with([
-                'message' => $e->validator->errors()->first(),
-                'status' => 'error'
-            ])->withInput(); // (S13)
+        } catch (\Illuminate\Validation\ValidationException $e) {
 
-        } catch (\Exception $e) { // (S14)
-            return redirect()->back()->with([
-                'message' => 'Terjadi kesalahan saat login. Silakan coba lagi.',
-                'status' => 'error'
-            ])->withInput(); // (S15)
+            // Validasi error Laravel default (tidak pakai toast)
+            return back()
+                ->withErrors($e->validator)
+                ->withInput();
+        } catch (\Exception $e) {
+
+            // Error lain → langsung tampilkan error di field (bukan toast)
+            return back()->withErrors([
+                'email' => 'Terjadi kesalahan saat login. Silakan coba lagi.',
+            ])->withInput();
         }
     }
 

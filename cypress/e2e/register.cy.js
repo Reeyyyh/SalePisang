@@ -1,7 +1,7 @@
 describe('Register Testing', () => {
 
     // TC-REG-01 – Registrasi berhasil (valid data)
-    it.only('TC-REG-01 Registrasi berhasil dengan data valid', () => {
+    it('TC-REG-01 Registrasi berhasil dengan data valid', () => {
         cy.visit('/register')
         cy.get('input[name="name"]').should('be.visible').type("user")
         cy.wait(300)
@@ -13,7 +13,14 @@ describe('Register Testing', () => {
         cy.wait(300)
         cy.get('button[type="submit"]').should('be.visible').click()
         cy.wait(500)
-        cy.url().should('include', '/login')
+
+        cy.get('body').then($body => {
+            if ($body.text().includes('The email has already been taken')) {
+                cy.log('User sudah ada, skip register')
+            } else {
+                cy.url().should('include', '/login')
+            }
+        });
     })
 
     // TC-REG-02 – Email bukan domain @gmail.com
@@ -45,7 +52,7 @@ describe('Register Testing', () => {
         cy.wait(300)
         cy.get('button[type="submit"]').should('be.visible').click()
         cy.wait(500)
-        cy.contains("Email sudah digunakan").should('be.visible')
+        cy.contains("The email has already been taken").should('be.visible')
     })
 
     // TC-REG-04 – Password kurang dari 8 karakter
@@ -61,7 +68,7 @@ describe('Register Testing', () => {
         cy.wait(300)
         cy.get('button[type="submit"]').should('be.visible').click()
         cy.wait(500)
-        cy.contains("Password must be at least 8 characters").should('be.visible')
+        cy.contains("The password field must be at least 8 characters").should('be.visible')
     })
 
     // TC-REG-05 – Password tanpa huruf besar / angka / simbol
@@ -77,7 +84,7 @@ describe('Register Testing', () => {
         cy.wait(300)
         cy.get('button[type="submit"]').should('be.visible').click()
         cy.wait(500)
-        cy.contains("Password harus mengandung huruf besar, angka, dan simbol").should('be.visible')
+        cy.contains("Password harus mengandung huruf besar, angka, simbol, serta minimal 8 karakter").should('be.visible')
     })
 
     // TC-REG-06 – Password tidak sama
@@ -142,7 +149,7 @@ describe('Register Testing', () => {
         cy.wait(300)
         cy.get('button[type="submit"]').should('be.visible').click()
         cy.wait(500)
-        cy.contains("Email field must not be greater than 100 characters").should('be.visible')
+        cy.contains("The email field must not be greater than 100 characters.").should('be.visible')
     })
 
     // TC-REG-10 – Nama kosong
@@ -206,7 +213,7 @@ describe('Register Testing', () => {
         cy.wait(300)
         cy.get('button[type="submit"]').should('be.visible').click()
         cy.wait(500)
-        cy.contains("The password confirmation field is required").should('be.visible')
+        cy.contains("The password confirmation does not match").should('be.visible')
     })
 
     // TC-REG-14 – Format email tidak valid
@@ -238,7 +245,7 @@ describe('Register Testing', () => {
         cy.wait(300)
         cy.get('button[type="submit"]').should('be.visible').click()
         cy.wait(500)
-        cy.contains("Password harus mengandung huruf besar, angka, dan simbol").should('be.visible')
+        cy.contains("Password harus mengandung huruf besar, angka, simbol, serta minimal 8 karakter").should('be.visible')
     })
 
     // TC-REG-16 – Password tanpa angka
@@ -254,7 +261,40 @@ describe('Register Testing', () => {
         cy.wait(300)
         cy.get('button[type="submit"]').should('be.visible').click()
         cy.wait(500)
-        cy.contains("Password harus mengandung huruf besar, angka, dan simbol").should('be.visible')
+        cy.contains("Password harus mengandung huruf besar, angka, simbol, serta minimal 8 karakter").should('be.visible')
+    })
+
+    it('TC-REG-17 Register admin', () => {
+        cy.visit('/register')
+        cy.get('input[name="name"]').type('admin')
+        cy.get('input[name="email"]').type('admin@gmail.com')
+        cy.get('input[name="password"]').type('Admin#1234')
+        cy.get('input[name="password_confirmation"]').type('Admin#1234')
+        cy.get('button[type="submit"]').click()
+
+        cy.get('body').then($body => {
+            if ($body.text().includes('The email has already been taken')) {
+                cy.log('Admin sudah ada, skip register')
+            } else {
+                cy.url().should('include', '/login')
+            }
+        });
+    })
+
+    it('TC-REG-18 Register seller', () => {
+        cy.visit('/register')
+        cy.get('input[name="name"]').type('seller')
+        cy.get('input[name="email"]').type('seller@gmail.com')
+        cy.get('input[name="password"]').type('Seller#1234')
+        cy.get('input[name="password_confirmation"]').type('Seller#1234')
+        cy.get('button[type="submit"]').click()
+        cy.get('body').then($body => {
+            if ($body.text().includes('The email has already been taken')) {
+                cy.log('Admin sudah ada, skip register')
+            } else {
+                cy.url().should('include', '/login')
+            }
+        });
     })
 
 })

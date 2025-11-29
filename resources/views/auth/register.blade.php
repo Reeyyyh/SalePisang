@@ -49,7 +49,7 @@
                 </div>
 
                 {{-- Register Form --}}
-                <form id="register-form" method="POST" action="{{ route('register') }}"
+                <form id="register-form" method="POST" action="{{ route('register') }}" novalidate
                     class="bg-white rounded-lg max-w-md w-full space-y-6 mx-auto px-6 py-8 shadow-lg animate-popUpOut">
 
                     @csrf
@@ -59,8 +59,9 @@
 
                     <div class="space-y-4">
                         {{-- Username --}}
+                        {{-- TODO  --}}
                         <div class="animate-popUpOut">
-                            <input name="name" type="text" required
+                            <input name="name" type="text"
                                 class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md focus:ring-2 focus:ring-yellow-400 focus:bg-white border border-gray-200"
                                 placeholder="Username" value="{{ old('name') }}" />
                             @error('name')
@@ -69,8 +70,9 @@
                         </div>
 
                         {{-- Email --}}
+                        {{-- TODO --}}
                         <div class="animate-popUpOut">
-                            <input name="email" type="email" autocomplete="email" required
+                            <input name="email" type="email" autocomplete="email"
                                 class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md focus:ring-2 focus:ring-yellow-400 focus:bg-white border border-gray-200"
                                 placeholder="Email address" value="{{ old('email') }}" />
                             @error('email')
@@ -79,8 +81,9 @@
                         </div>
 
                         {{-- Password --}}
+                        {{-- TODO --}}
                         <div class="relative animate-popUpOut">
-                            <input id="password" name="password" type="password" autocomplete="new-password" required
+                            <input id="password" name="password" type="password" autocomplete="new-password"
                                 class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 pr-10 rounded-md focus:ring-2 focus:ring-yellow-400 focus:bg-white border border-gray-200"
                                 placeholder="Password" />
                             <button type="button" onclick="togglePassword('password', 'eyePassword')"
@@ -100,9 +103,10 @@
                         </div>
 
                         {{-- Confirm Password --}}
+                        {{-- TODO --}}
                         <div class="relative animate-popUpOut">
                             <input id="password_confirmation" name="password_confirmation" type="password"
-                                autocomplete="new-password" required
+                                autocomplete="new-password"
                                 class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 pr-10 rounded-md focus:ring-2 focus:ring-yellow-400 focus:bg-white border border-gray-200"
                                 placeholder="Confirm Password" />
                             <button type="button" onclick="togglePassword('password_confirmation', 'eyeConfirm')"
@@ -131,7 +135,7 @@
         </div>
     </section>
 
-    @vite('resources/js/app.js')
+    {{-- @vite('resources/js/app.js') --}}
 </body>
 
 </html>

@@ -1,5 +1,5 @@
-// import './bootstrap';
+import './bootstrap';
 import './login';
-import './register';
-// import './product';
-// import './profile';
+// import './register';
+import './product';
+import './profile';
