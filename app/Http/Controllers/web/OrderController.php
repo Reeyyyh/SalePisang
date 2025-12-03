@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
-class MvcOrder extends Controller
+class OrderController extends Controller
 {
     public function checkoutForm()
     {

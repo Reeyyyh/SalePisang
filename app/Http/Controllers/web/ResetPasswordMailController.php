@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 
-class MvcResetPasswordMail extends Controller
+class ResetPasswordMailController extends Controller
 {
     // 1. Tampilkan form untuk meminta link reset
     public function showForgotForm()

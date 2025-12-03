@@ -8,7 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MvcCategory extends Controller
+class CategoryController extends Controller
 {
     public function showByCategory(Request $request, $slug)
     {

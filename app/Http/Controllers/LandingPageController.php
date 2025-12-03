@@ -13,11 +13,11 @@ class LandingPageController extends Controller
         $user = Auth::user();
 
         if ($user?->role === 'admin') {
-            return redirect('/admin-dashboard'); // langsung ke Filament admin panel
+            return redirect('/admin-dashboard');
         }
 
         if ($user?->role === 'seller') {
-            return redirect('/seller-dashboard'); // langsung ke Filament seller panel
+            return redirect('/seller-dashboard');
         }
 
         // Untuk user biasa / guest

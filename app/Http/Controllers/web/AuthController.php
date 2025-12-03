@@ -10,7 +10,7 @@ use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
-class MvcAuth extends Controller
+class AuthController extends Controller
 {
     // Tampilkan halaman register
     public function showRegister()
@@ -112,21 +112,13 @@ class MvcAuth extends Controller
                 $request->session()->regenerate(); // (S5)
 
                 if ($user->role === 'admin') { // (S6)
-                    Notification::make()
-                        ->title('Login Berhasil')
-                        ->body('Selamat datang, Admin!')
-                        ->success()
-                        ->send();
                     return redirect()->intended('/admin-dashboard'); // (S7)
 
                 } elseif ($user->role === 'seller') { // (S8)
-                    Notification::make()
-                        ->title('Login Berhasil')
-                        ->body('Selamat datang Seller, selamat berjualan!')
-                        ->success()
-                        ->send();
-                    return redirect()->intended('/seller-dashboard'); // (S9)
-
+                    return redirect()->intended('/seller-dashboard')->with([
+                        'message' => 'Seller Login berhasil!',
+                        'status' => 'success'
+                    ]);
                 } else { // (S10)
                     return redirect()->intended(route('landingpage'))->with([
                         'message' => 'Login berhasil!',
@@ -136,13 +128,11 @@ class MvcAuth extends Controller
             }
         } catch (\Illuminate\Validation\ValidationException $e) {
 
-            // Validasi error Laravel default (tidak pakai toast)
             return back()
                 ->withErrors($e->validator)
                 ->withInput();
         } catch (\Exception $e) {
 
-            // Error lain → langsung tampilkan error di field (bukan toast)
             return back()->withErrors([
                 'email' => 'Terjadi kesalahan saat login. Silakan coba lagi.',
             ])->withInput();

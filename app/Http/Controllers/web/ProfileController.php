@@ -9,7 +9,7 @@ use App\Models\PaymentStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MvcProfile extends Controller
+class ProfileController extends Controller
 {
     // TAMPILKAN PROFIL USER DI BLADE
     public function show(Request $request)

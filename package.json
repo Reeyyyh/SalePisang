@@ -4,7 +4,10 @@
         "dev": "vite",
         "build": "vite build",
         "cypress": "cypress open",
-        "cypress:run": "cypress run"
+        "cypress:run": "cypress run",
+        "cypress:register": "cypress run --spec cypress/e2e/register.cy.js",
+        "cypress:login": "cypress run --spec cypress/e2e/login.cy.js",
+        "cypress:product": "cypress run --spec cypress/e2e/product_crud.cy.js"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.21",

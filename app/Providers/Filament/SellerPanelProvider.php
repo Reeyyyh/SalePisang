@@ -23,7 +23,7 @@ class SellerPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('seller')
-            ->path('seller-dashboard')
+            ->path('fillament-seller-dashboard')
             ->login()
             ->colors([
                 'primary' => '#0D9488', // warna berbeda biar kelihatan

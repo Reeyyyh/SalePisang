@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-class MvcVerificationMail extends Controller
+class VerificationMailContorller extends Controller
 {
     public function sendVerificationEmail($user)
     {

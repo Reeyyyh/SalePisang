@@ -13,6 +13,8 @@ export default defineConfig({
                 'resources/js/product.js',
 
                 'resources/js/login.js',
+
+                'resources/js/seller/image_helper.js',
             ],
             refresh: true,
         }),

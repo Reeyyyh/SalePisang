@@ -7,7 +7,7 @@ use App\Models\CartProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class MvcCartProducth extends Controller
+class CartProductController extends Controller
 {
     //
 

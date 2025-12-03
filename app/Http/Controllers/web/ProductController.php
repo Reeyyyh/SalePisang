@@ -8,7 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MvcProdutch extends Controller
+class ProductController extends Controller
 {
 
     public function index(Request $request)
@@ -20,9 +20,9 @@ class MvcProdutch extends Controller
             return redirect('/admin-dashboard'); // langsung ke Filament admin panel
         }
 
-        if ($user?->role === 'seller') {
-            return redirect('/seller-dashboard'); // langsung ke Filament seller panel
-        }
+        // if ($user?->role === 'seller') {
+        //     return redirect('/seller-dashboard'); // langsung ke Filament seller panel
+        // }
 
         $request->validate([
             'sort' => 'nullable|in:price_asc,price_desc',
@@ -119,4 +119,12 @@ class MvcProdutch extends Controller
 
         return view('product.product', compact('products', 'searchQuery', 'productCount', 'categories'));
     }
+
+
+
+
+    // CRUD PRODUCT
+
+
+
 }

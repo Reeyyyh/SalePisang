@@ -12,13 +12,13 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        if ($request->is('admin-dashboard') || $request->is('admin-dashboard/*')) {
-            return url('/admin-dashboard/login');
-        }
+        // if ($request->is('admin-dashboard') || $request->is('admin-dashboard/*')) {
+        //     return url('/admin-dashboard/login');
+        // }
 
-        if ($request->is('seller-dashboard') || $request->is('seller-dashboard/*')) {
-            return url('/seller-dashboard/login');
-        }
+        // if ($request->is('seller-dashboard') || $request->is('seller-dashboard/*')) {
+        //     return url('/seller-dashboard/login');
+        // }
 
         return route('login');
     }

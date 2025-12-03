@@ -13,7 +13,7 @@ class DeleteUser extends Command
     public function handle()
     {
         $email = $this->argument('email');
-        User::where('email', $email)->delete();
-        $this->info("User $email deleted");
+        User::where('email', $email)->forceDelete();
+        $this->info("User $email permanently deleted");
     }
 }

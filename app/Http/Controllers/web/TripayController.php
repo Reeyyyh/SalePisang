@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class MvcTripayController extends Controller
+class TripayController extends Controller
 {
     // Handle callback dari Tripay
     public function handleCallback(Request $request)

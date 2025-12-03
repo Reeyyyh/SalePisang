@@ -23,7 +23,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin-dashboard')
+            ->path('fillament-admin-dashboard')
             ->login()
             ->colors([
                 'primary' => '#213555',

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Midtrans\Config;
 use Midtrans\Snap;
 
-class MvcMidtransController extends Controller
+class MidtransController extends Controller
 {
     public function __construct()
     {
